@@ -28,7 +28,7 @@ public class HomeActivity extends AppCompatActivity {
         userAvatar = findViewById(R.id.userAvatar);
 
         // Mock user data
-        userNameTextView.setText("Welcome, John Doe!");
+        userNameTextView.setText("Welcome, Patander!");
 
         searchMoviesButton.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, MainActivity.class);
