@@ -1,26 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
     android:background="@drawable/gradient_bg"
     android:padding="16dp">
 
-    <Button
-        android:id="@+id/searchMoviesButton"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Search Movies"
-        android:background="@drawable/button_bg"
-        android:textColor="@android:color/white"
-        android:layout_marginBottom="16dp" />
+        android:orientation="vertical"
+        android:gravity="center">
 
-    <Button
-        android:id="@+id/topRatedMoviesButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Top Rated Movies"
-        android:background="@drawable/button_bg"
-        android:textColor="@android:color/white" />
-</LinearLayout>
+        <!-- User Profile Section -->
+        <ImageView
+            android:id="@+id/userAvatar"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/avatar_placeholder"
+            android:contentDescription="User Avatar"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/circular_bg" />
+
+        <TextView
+            android:id="@+id/userNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome, User!"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Navigation Buttons -->
+        <Button
+            android:id="@+id/searchMoviesButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Search Movies"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/button_bg"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/topRatedMoviesButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Top Rated Movies"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/button_bg"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/trendingMoviesButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Trending Movies"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/button_bg"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/favoritesButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Favorites"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/button_bg"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/settingsButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Settings"
+            android:background="@drawable/button_bg"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+</ScrollView>
