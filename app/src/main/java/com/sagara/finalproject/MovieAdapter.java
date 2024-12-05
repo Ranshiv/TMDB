@@ -1,17 +1,21 @@
 package com.sagara.finalproject;
 
-
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import com.bumptech.glide.Glide;
-public class    MovieAdapter extends BaseAdapter {
+import com.google.gson.Gson;
+
+import java.util.ArrayList;
+
+public class MovieAdapter extends BaseAdapter {
 
     private Context context;
     private ArrayList<Movie> movies;
@@ -35,8 +39,20 @@ public class    MovieAdapter extends BaseAdapter {
     public long getItemId(int position) {
         return position;
     }
+    private void saveFavorites() {
+        ArrayList<Movie> favoriteMovies = new ArrayList<>();
+        for (Movie m : movies) {
+            if (m.isFavorite()) {
+                favoriteMovies.add(m);
+            }
+        }
 
-
+        SharedPreferences preferences = context.getSharedPreferences("FavoritesPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        String json = new Gson().toJson(favoriteMovies);
+        editor.putString("favoriteMovies", json);
+        editor.apply();
+    }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -49,6 +65,7 @@ public class    MovieAdapter extends BaseAdapter {
         TextView releaseDateView = convertView.findViewById(R.id.releaseDate);
         TextView ratingView = convertView.findViewById(R.id.rating);
         TextView synopsisView = convertView.findViewById(R.id.synopsis);
+        ImageButton favoriteButton = convertView.findViewById(R.id.favoriteButton);
 
         Movie movie = movies.get(position);
 
@@ -58,18 +75,27 @@ public class    MovieAdapter extends BaseAdapter {
         synopsisView.setText(movie.getSynopsis());
 
         // Load the movie poster using Glide
-        if (movie.getPosterUrl() != null) {
-            Glide.with(context)
-                    .load(movie.getPosterUrl())
-                             // Optional: Error image
-                    .into(posterView);
+        Glide.with(context)
+                .load(movie.getPosterUrl())
+                .placeholder(R.drawable.placeholder_image)
+                .into(posterView);
+
+        // Update favorite button icon based on the movie's favorite state
+        if (movie.isFavorite()) {
+            favoriteButton.setImageResource(R.drawable.ic_favorite);
         } else {
-            posterView.setImageResource(R.drawable.placeholder_image); // Default image if URL is null
+            favoriteButton.setImageResource(R.drawable.ic_favorite_border);
         }
+
+        // Handle favorite button click
+        favoriteButton.setOnClickListener(v -> {
+            boolean isFavorite = !movie.isFavorite(); // Toggle favorite state
+            movie.setFavorite(isFavorite);
+            saveFavorites(); // Save updated favorites to SharedPreferences
+            notifyDataSetChanged(); // Refresh the adapter to update the UI
+        });
+
 
         return convertView;
     }
-
-
 }
-

@@ -1,10 +1,12 @@
 package com.sagara.finalproject;
+
 public class Movie {
     private String title;
     private String releaseDate;
     private double rating;
     private String synopsis;
-    private String posterUrl; // Add poster URL field
+    private String posterUrl;
+    private boolean isFavorite; // New field for favorite state
 
     public Movie(String title, String releaseDate, double rating, String synopsis, String posterUrl) {
         this.title = title;
@@ -12,6 +14,7 @@ public class Movie {
         this.rating = rating;
         this.synopsis = synopsis;
         this.posterUrl = posterUrl;
+        this.isFavorite = false; // Default value
     }
 
     public String getTitle() {
@@ -31,6 +34,14 @@ public class Movie {
     }
 
     public String getPosterUrl() {
-        return posterUrl; // Getter for poster URL
+        return posterUrl;
+    }
+
+    public boolean isFavorite() {
+        return isFavorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        isFavorite = favorite;
     }
 }
