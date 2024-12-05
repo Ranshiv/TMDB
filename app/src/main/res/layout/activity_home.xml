@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_bg"
@@ -12,69 +13,121 @@
         android:gravity="center">
 
         <!-- User Profile Section -->
-        <ImageView
-            android:id="@+id/userAvatar"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/avatar_placeholder"
-            android:contentDescription="User Avatar"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/circular_bg" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginBottom="16dp"
+            app:cardElevation="6dp"
+            app:cardCornerRadius="60dp">
+
+            <ImageView
+                android:id="@+id/userAvatar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/avatar_placeholder"
+                android:scaleType="centerCrop"
+                android:contentDescription="User Avatar" />
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/userNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Welcome, User!"
-            android:textSize="18sp"
+            android:text="Welcome, Patander!"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="@android:color/white"
             android:layout_marginBottom="24dp" />
 
         <!-- Navigation Buttons -->
-        <Button
-            android:id="@+id/searchMoviesButton"
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Search Movies"
             android:layout_marginBottom="16dp"
-            android:background="@drawable/button_bg"
-            android:textColor="@android:color/white" />
+            app:cardElevation="8dp"
+            app:cardCornerRadius="18dp">
 
-        <Button
-            android:id="@+id/topRatedMoviesButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Top Rated Movies"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/button_bg"
-            android:textColor="@android:color/white" />
+            <Button
+                android:id="@+id/searchMoviesButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Search Movies"
+                android:background="@drawable/button_bg"
+                android:textColor="@android:color/white"
+                android:drawableLeft="@drawable/ic_search"
+                android:drawablePadding="10dp" />
+        </androidx.cardview.widget.CardView>
 
-        <Button
-            android:id="@+id/trendingMoviesButton"
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Trending Movies"
             android:layout_marginBottom="16dp"
-            android:background="@drawable/button_bg"
-            android:textColor="@android:color/white" />
+            app:cardElevation="8dp"
+            app:cardCornerRadius="18dp">
 
-        <Button
-            android:id="@+id/favoritesButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Favorites"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/button_bg"
-            android:textColor="@android:color/white" />
+            <Button
+                android:id="@+id/topRatedMoviesButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Top Rated Movies"
+                android:background="@drawable/button_bg"
+                android:textColor="@android:color/white"
+                android:drawableLeft="@drawable/ic_star"
+                android:drawablePadding="10dp" />
+        </androidx.cardview.widget.CardView>
 
-        <Button
-            android:id="@+id/settingsButton"
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Settings"
             android:layout_marginBottom="16dp"
-            android:background="@drawable/button_bg"
-            android:textColor="@android:color/white" />
+            app:cardElevation="8dp"
+            app:cardCornerRadius="18dp">
+
+            <Button
+                android:id="@+id/trendingMoviesButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Trending Movies"
+                android:background="@drawable/button_bg"
+                android:textColor="@android:color/white"
+                android:drawableLeft="@drawable/ic_trending"
+                android:drawablePadding="10dp" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardElevation="8dp"
+            app:cardCornerRadius="18dp">
+
+            <Button
+                android:id="@+id/favoritesButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Favorites"
+                android:background="@drawable/button_bg"
+                android:textColor="@android:color/white"
+                android:drawableLeft="@drawable/ic_favorite"
+                android:drawablePadding="10dp" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardElevation="8dp"
+            app:cardCornerRadius="18dp">
+
+            <Button
+                android:id="@+id/settingsButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Settings"
+                android:background="@drawable/button_bg"
+                android:textColor="@android:color/white"
+                android:drawableLeft="@drawable/ic_settings"
+                android:drawablePadding="10dp" />
+        </androidx.cardview.widget.CardView>
     </LinearLayout>
 </ScrollView>
