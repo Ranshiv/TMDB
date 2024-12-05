@@ -2,6 +2,8 @@ package com.sagara.finalproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -31,32 +33,49 @@ public class HomeActivity extends AppCompatActivity {
         userNameTextView.setText("Welcome, Patander!");
 
         searchMoviesButton.setOnClickListener(v -> {
+            Animation animation = AnimationUtils.loadAnimation(this, R.anim.button_click);
+            v.startAnimation(animation);
             Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+
             startActivity(intent);
+
         });
 
         topRatedMoviesButton.setOnClickListener(v -> {
+            Animation animation = AnimationUtils.loadAnimation(this, R.anim.button_click);
+            v.startAnimation(animation);
             Intent intent = new Intent(HomeActivity.this, MovieListActivity.class);
             intent.putExtra("query", "top_rated");
             startActivity(intent);
+
+            overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
         });
 
         trendingMoviesButton.setOnClickListener(v -> {
+            Animation animation = AnimationUtils.loadAnimation(this, R.anim.button_click);
+            v.startAnimation(animation);
             Intent intent = new Intent(HomeActivity.this, MovieListActivity.class);
             intent.putExtra("query", "trending");
             startActivity(intent);
+            overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
         });
 
         favoritesButton.setOnClickListener(v -> {
             // Placeholder for FavoritesActivity
+            Animation animation = AnimationUtils.loadAnimation(this, R.anim.button_click);
+            v.startAnimation(animation);
             Intent intent = new Intent(HomeActivity.this, FavoritesActivity.class);
             startActivity(intent);
+            overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
         });
 
         settingsButton.setOnClickListener(v -> {
             // Placeholder for SettingsActivity
+            Animation animation = AnimationUtils.loadAnimation(this, R.anim.button_click);
+            v.startAnimation(animation);
             Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
             startActivity(intent);
+            overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
         });
     }
 }

@@ -55,6 +55,8 @@ public class SettingsActivity extends AppCompatActivity {
             Intent intent = new Intent(SettingsActivity.this, LoginActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Clear the back stack
             startActivity(intent);
+
+            overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
             Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show();
         });
     }
