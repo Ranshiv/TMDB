@@ -16,7 +16,7 @@
         android:orientation="horizontal"
         android:padding="12dp">
 
-        <!-- Movie Poster -->
+
         <ImageView
             android:id="@+id/moviePoster"
             android:layout_width="120dp"
