@@ -1,7 +1,9 @@
 package com.sagara.finalproject;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.widget.CompoundButton;
+import android.widget.Button;
 import android.widget.Switch;
 import android.widget.Toast;
 
@@ -10,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class SettingsActivity extends AppCompatActivity {
 
     private Switch notificationsSwitch, darkModeSwitch;
+    private Button logoutButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +22,7 @@ public class SettingsActivity extends AppCompatActivity {
         // Initialize UI components
         notificationsSwitch = findViewById(R.id.notificationsSwitch);
         darkModeSwitch = findViewById(R.id.darkModeSwitch);
+        logoutButton = findViewById(R.id.logoutButton);
 
         // Set listeners for switches
         notificationsSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
@@ -37,6 +41,21 @@ public class SettingsActivity extends AppCompatActivity {
                 Toast.makeText(this, "Dark Mode Disabled", Toast.LENGTH_SHORT).show();
                 // Add light mode logic here
             }
+        });
+
+        // Handle Logout Button Click
+        logoutButton.setOnClickListener(v -> {
+            // Clear login state
+            SharedPreferences preferences = getSharedPreferences("LoginPrefs", MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putBoolean("isLoggedIn", false);
+            editor.apply();
+
+            // Redirect to LoginActivity
+            Intent intent = new Intent(SettingsActivity.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Clear the back stack
+            startActivity(intent);
+            Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show();
         });
     }
 }
